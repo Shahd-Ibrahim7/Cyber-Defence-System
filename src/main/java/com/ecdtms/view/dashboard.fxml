@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0"
+            prefWidth="1100.0"
+            style="-fx-background-color: #0f172a;"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ecdtms.controller.DashboardController">
+
+    <!-- TOP NAVBAR -->
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              spacing="20.0"
+              style="-fx-background-color: #111827;
+                     -fx-padding: 15;">
+
+            <Label text="ECDTMS Dashboard"
+                   textFill="#38bdf8">
+                <font>
+                    <Font name="System Bold" size="24.0"/>
+                </font>
+            </Label>
+
+            <HBox.margin>
+                <Insets left="15.0"/>
+            </HBox.margin>
+
+        </HBox>
+    </top>
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox prefWidth="220.0"
+              spacing="15.0"
+              style="-fx-background-color: #111827;
+                     -fx-padding: 20;">
+
+            <Label text="Navigation"
+                   textFill="white">
+                <font>
+                    <Font name="System Bold" size="18.0"/>
+                </font>
+            </Label>
+
+            <!-- Incidents -->
+            <Button text="Incidents"
+                    maxWidth="Infinity"
+                    onAction="#onIncidentsClick"
+                    style="-fx-background-color: #1e293b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 6;
+                           -fx-padding: 10;
+                           -fx-cursor: hand;" />
+
+            <!-- Threats -->
+            <Button text="Threats"
+                    maxWidth="Infinity"
+                    onAction="#onThreatsClick"
+                    style="-fx-background-color: #1e293b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 6;
+                           -fx-padding: 10;
+                           -fx-cursor: hand;" />
+
+            <!-- Alerts -->
+            <Button text="Alerts"
+                    maxWidth="Infinity"
+                    onAction="#onAlertsClick"
+                    style="-fx-background-color: #1e293b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 6;
+                           -fx-padding: 10;
+                           -fx-cursor: hand;" />
+
+            <!-- Logout -->
+            <Button text="Logout"
+                    maxWidth="Infinity"
+                    onAction="#onLogoutClick"
+                    style="-fx-background-color: #dc2626;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 6;
+                           -fx-padding: 10;
+                           -fx-cursor: hand;" />
+
+        </VBox>
+    </left>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <VBox spacing="25.0"
+              style="-fx-padding: 30;">
+
+            <!-- Title -->
+            <Label text="Security Overview"
+                   textFill="white">
+                <font>
+                    <Font name="System Bold" size="28.0"/>
+                </font>
+            </Label>
+
+            <!-- Stats Cards -->
+            <HBox spacing="20.0">
+
+                <!-- Active Incidents -->
+                <VBox prefWidth="220.0"
+                      spacing="10.0"
+                      style="-fx-background-color: #1e293b;
+                             -fx-background-radius: 12;
+                             -fx-padding: 20;">
+
+                    <Label text="Active Incidents"
+                           textFill="#94a3b8">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+
+                    <Label fx:id="lblActiveIncidents"
+                           text="0"
+                           textFill="#f87171">
+                        <font>
+                            <Font name="System Bold" size="34.0"/>
+                        </font>
+                    </Label>
+
+                </VBox>
+
+                <!-- Threat Level -->
+                <VBox prefWidth="220.0"
+                      spacing="10.0"
+                      style="-fx-background-color: #1e293b;
+                             -fx-background-radius: 12;
+                             -fx-padding: 20;">
+
+                    <Label text="Threat Level"
+                           textFill="#94a3b8">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+
+                    <Label fx:id="lblThreatLevel"
+                           text="LOW"
+                           textFill="#38bdf8">
+                        <font>
+                            <Font name="System Bold" size="30.0"/>
+                        </font>
+                    </Label>
+
+                </VBox>
+
+                <!-- System Status -->
+                <VBox prefWidth="220.0"
+                      spacing="10.0"
+                      style="-fx-background-color: #1e293b;
+                             -fx-background-radius: 12;
+                             -fx-padding: 20;">
+
+                    <Label text="System Status"
+                           textFill="#94a3b8">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+
+                    <Label text="SECURED"
+                           textFill="#4ade80">
+                        <font>
+                            <Font name="System Bold" size="28.0"/>
+                        </font>
+                    </Label>
+
+                </VBox>
+
+            </HBox>
+
+            <!-- Recent Activity -->
+            <VBox spacing="15.0"
+                  style="-fx-background-color: #1e293b;
+                         -fx-background-radius: 12;
+                         -fx-padding: 20;">
+
+                <Label text="Recent Security Activity"
+                       textFill="white">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+
+                <Label text="• Malware activity detected on Server-01"
+                       textFill="#cbd5e1"/>
+
+                <Label text="• Firewall rules updated successfully"
+                       textFill="#cbd5e1"/>
+
+                <Label text="• New phishing threat added to database"
+                       textFill="#cbd5e1"/>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
