@@ -6,8 +6,8 @@ public class SystemAdmin extends Employee implements Auditable {
     private String accessLevel;
 
     public SystemAdmin(int id, String name, String email,
-                       String department, double salary,
-                       String accessLevel) {
+        String department, double salary,
+        String accessLevel) {
         super(id, name, email, department, salary);
         this.accessLevel = accessLevel;
     }
@@ -33,7 +33,7 @@ public class SystemAdmin extends Employee implements Auditable {
     @Override
     public String toString() {
         return "SystemAdmin{" +
-                "accessLevel='" + accessLevel + '\'' +
-                "} " + super.toString();
+        "accessLevel='" + accessLevel + '\'' +
+        "} " + super.toString();
     }
 }

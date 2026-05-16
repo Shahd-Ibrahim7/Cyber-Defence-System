@@ -6,8 +6,8 @@ public class SOCManager extends Employee implements Auditable {
     private int teamSize;
 
     public SOCManager(int id, String name, String email,
-                      String department, double salary,
-                      int teamSize) {
+        String department, double salary,
+        int teamSize) {
         super(id, name, email, department, salary);
         this.teamSize = teamSize;
     }
@@ -33,7 +33,7 @@ public class SOCManager extends Employee implements Auditable {
     @Override
     public String toString() {
         return "SOCManager{" +
-                "teamSize=" + teamSize +
-                "} " + super.toString();
+        "teamSize=" + teamSize +
+        "} " + super.toString();
     }
 }

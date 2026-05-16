@@ -11,7 +11,10 @@ public abstract class Person {
         this.email = email;
     }
 
-    // Abstract method
+    //  Abstract  method
+    //  Polymorphism (Overriding)
+    // كل class بيطبقها بطريقة مختلفة
+
     public abstract void displayRole();
 
     public int getId() {
@@ -39,11 +42,12 @@ public abstract class Person {
     }
 
     @Override
+    //دي method بتحول object لنص
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", email='" + email + '\'' +
+        '}';
     }
 }

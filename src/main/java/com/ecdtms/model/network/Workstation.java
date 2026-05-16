@@ -6,8 +6,7 @@ public class Workstation extends Device {
 
     private Employee assignedUser;
 
-    public Workstation(String deviceId, String ipAddress,
-                       
+    public Workstation(String deviceId, String ipAddress,                      
         DeviceStatus status, Employee assignedUser) {
         super(deviceId, ipAddress, status);
         this.assignedUser = assignedUser;

@@ -7,8 +7,7 @@ public class Firewall extends Device implements Auditable {
     private int rulesCount;
     private String firewallType;
 
-    public Firewall(String deviceId, String ipAddress, DeviceStatus status,
-                    
+    public Firewall(String deviceId, String ipAddress, DeviceStatus status,                  
         int rulesCount, String firewallType) {
         super(deviceId, ipAddress, status);
         this.rulesCount = rulesCount;
@@ -32,7 +31,7 @@ public class Firewall extends Device implements Auditable {
     @Override
     public void logActivity() {
         System.out.println("Firewall Log -> Rules: " + rulesCount +
-                " | Type: " + firewallType);
+        " | Type: " + firewallType);
     }
 
     public int getRulesCount() {

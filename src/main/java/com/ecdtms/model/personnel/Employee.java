@@ -1,14 +1,16 @@
 package com.ecdtms.model.personnel;
 
 public class Employee extends Person {
+    // this class is a child of Person class so it inherate variables and methods of Person class
     protected String department;
     protected double salary;
 
     public Employee(int id, String name, String email,
-                    String department, double salary) {
+        String department, double salary) {
         super(id, name, email);
         this.department = department;
-
+     // salary can't be negative so :
+     // Validation anf Error prevention
         if (salary >= 0) {
             this.salary = salary;
         } else {
@@ -42,8 +44,8 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Employee{" +
-                "department='" + department + '\'' +
-                ", salary=" + salary +
-                "} " + super.toString();
+        "department='" + department + '\'' +
+        ", salary=" + salary +
+        "} " + super.toString();
     }
 }

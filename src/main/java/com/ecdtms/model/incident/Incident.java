@@ -2,6 +2,7 @@ package com.ecdtms.model.incident;
 
 import com.ecdtms.model.network.Device;
 import com.ecdtms.model.threat.Threat;
+import com.ecdtms.model.threat.Vulnerability;
 import com.ecdtms.model.personnel.SecurityAnalyst;
 import java.time.LocalDateTime;
 
@@ -24,9 +25,9 @@ public class Incident {
         this.timestamp = LocalDateTime.now();
     }
 
-    public void assignAnalyst(SecurityAnalyst analyst) {
+    public void assignAnalyst(SecurityAnalyst analyst) { // يتاكد من أن المحلل الأمني غير فارغ قبل تعيينه للحادث
         if (analyst != null) {
-            this.assignedAnalyst = analyst;
+            this.assignedAnalyst = analyst; // عند تعيين محلل أمني للحادث، يتم تحديث حالة الحادث إلى "قيد التنفيذ"
             this.status = IncidentStatus.IN_PROGRESS;
             System.out.println("Incident [" + title + "] assigned to: " + analyst.getName());
         }
@@ -65,9 +66,23 @@ public class Incident {
     @Override
     public String toString() {
         return "Incident #" + incidentId +
-                ": " + title +
-                " | Status: " + status +
-                " | Device: " + (affectedDevice != null ? affectedDevice.getDeviceId() : "N/A") +
-                " | Threat: " + (detectedThreat != null ? detectedThreat.getThreatId() : "N/A");
+            ": " + title +
+            " | Status: " + status +
+            " | Device: " + (affectedDevice != null ? 
+            affectedDevice.getDeviceId() : "N/A") + 
+            " | Threat: " + (detectedThreat != null ? 
+            detectedThreat.getThreatId() : "N/A"); 
     }
+// Threat attacks Device
+//          ↓
+//Vulnerability exploited
+//        ↓
+//Incident created
+//       ↓
+//Analyst assigned
+//       ↓
+//Status updated
+//     ↓
+//Resolved
+
 }

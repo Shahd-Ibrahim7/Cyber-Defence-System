@@ -6,8 +6,8 @@ public class PhishingThreat extends Threat {
     private String fakeUrl;
 
     public PhishingThreat(String threatId, String description,
-                          SeverityLevel severity,
-                          String targetEmail, String fakeUrl) {
+        SeverityLevel severity,
+        String targetEmail, String fakeUrl) {
         super(threatId, description, severity);
         this.targetEmail = targetEmail;
         this.fakeUrl = fakeUrl;

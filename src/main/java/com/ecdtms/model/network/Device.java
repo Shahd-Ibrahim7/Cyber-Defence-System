@@ -14,7 +14,7 @@ public abstract class Device implements Reportable {
         this.status = status;
     }
 
-    public abstract void scanVulnerabilities();
+    public abstract void scanVulnerabilities(); //Abstract Method 
 
     public void sendData(String data) {
         if (status != DeviceStatus.ACTIVE) {

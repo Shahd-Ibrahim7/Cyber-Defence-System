@@ -18,6 +18,7 @@ public class Server extends Device {
 
     public void increaseUptime(double value) {
         uptime += value;
+        //وقت تشغيل السيرفر
     }
 
     public String getOsVersion() {

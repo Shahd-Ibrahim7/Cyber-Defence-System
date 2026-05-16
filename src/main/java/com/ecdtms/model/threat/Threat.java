@@ -14,7 +14,7 @@ public abstract class Threat implements Reportable {
         this.severity = severity;
     }
 
-    public abstract void performAttack();
+    public abstract void performAttack(); // كل نوع Threat لازم يحدد بنفسه طريقة الهجوم
 
     @Override
     public void generateReport() {
