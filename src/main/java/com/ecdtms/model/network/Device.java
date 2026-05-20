@@ -6,7 +6,7 @@ public abstract class Device implements Reportable {
 
     protected String deviceId;
     protected String ipAddress;
-    protected DeviceStatus status;
+    protected DeviceStatus status; // enum to represent device status (ACTIVE, INACTIVE, COMPROMISED)
 
     public Device(String deviceId, String ipAddress, DeviceStatus status) {
         this.deviceId = deviceId;
@@ -25,10 +25,10 @@ public abstract class Device implements Reportable {
     }
 
     public void receiveData(String data) {
-        if (status == DeviceStatus.COMPROMISED) {
+        if (status == DeviceStatus.COMPROMISED) { // Condition to check if device is compromised
             System.out.println("Warning: compromised device received suspicious data!");
         }
-        System.out.println(deviceId + " received: " + data);
+        System.out.println(deviceId + " received: " + data);   
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseManager {
 
     private static final String URL =
-            "jdbc:mysql://localhost:3306/ecdtms_db?useSSL=false&serverTimezone=UTC";
+        "jdbc:mysql://localhost:3306/ecdtms_db?useSSL=false&serverTimezone=UTC";
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
@@ -25,9 +25,9 @@ public class DatabaseManager {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 connection = DriverManager.getConnection(
-                        URL,
-                        USERNAME,
-                        PASSWORD
+                    URL,
+                    USERNAME,
+                    PASSWORD
                 );
 
             } catch (ClassNotFoundException e) {

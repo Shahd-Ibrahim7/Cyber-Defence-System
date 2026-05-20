@@ -15,6 +15,10 @@ public class Network {
         this.devices = new ArrayList<>(); // Composition - Network has a list of Devices creating arraylist to hold devices in the network
     }
 
+// Device -> Firewall, Server, Workstation / MAIN class
+// devices -> private variable 
+// device -> parameter in addDevice method
+
     public void addDevice(Device device) {
         devices.add(device);
         System.out.println("Device " + device.getDeviceId()

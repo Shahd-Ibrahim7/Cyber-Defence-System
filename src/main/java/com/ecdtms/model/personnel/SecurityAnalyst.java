@@ -2,7 +2,7 @@ package com.ecdtms.model.personnel;
 
 import com.ecdtms.model.interfaces.Auditable;
 
-public class SecurityAnalyst extends Employee implements Auditable  { //interface implementation -> (implements Auditable)
+public class SecurityAnalyst extends Employee  implements Auditable  { //interface implementation -> (implements Auditable)
     private String specialization;
 
     public SecurityAnalyst(int id, String name, String email,

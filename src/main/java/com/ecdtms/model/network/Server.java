@@ -8,7 +8,7 @@ public class Server extends Device {
     public Server(String deviceId, String ipAddress, DeviceStatus status, String osVersion) {
         super(deviceId, ipAddress, status);
         this.osVersion = osVersion;
-        this.uptime = 100.0;
+        this.uptime = 100.0; // Initial uptime in hours
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Server extends Device {
     }
 
     public void increaseUptime(double value) {
-        uptime += value;
+        uptime += value; // 100.0 + 24.0 = 124.0
         //وقت تشغيل السيرفر
     }
 

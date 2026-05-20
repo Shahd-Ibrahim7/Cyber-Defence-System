@@ -4,7 +4,7 @@ import com.ecdtms.model.personnel.Employee;
 
 public class Workstation extends Device {
 
-    private Employee assignedUser;
+    private Employee assignedUser;   
 
     public Workstation(String deviceId, String ipAddress,                      
         DeviceStatus status, Employee assignedUser) {
@@ -15,7 +15,7 @@ public class Workstation extends Device {
     @Override
     public void scanVulnerabilities() {
         System.out.println("Scanning workstation of: " + assignedUser.getName());
-    }
+    } // EXAMPLE: Scanning workstation of: Alice Johnson
 
     public Employee getAssignedUser() {
         return assignedUser;

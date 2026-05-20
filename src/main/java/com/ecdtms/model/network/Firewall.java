@@ -19,7 +19,7 @@ public class Firewall extends Device implements Auditable {
         System.out.println("Firewall scanning rules for threats...");
     }
 
-    public boolean filter(String data) {
+    public boolean filter(String data) { // ewrrdfJFTFG
         if (data.toLowerCase().contains("malware") ||
             data.toLowerCase().contains("attack")) {
             System.out.println("🚨 Firewall blocked malicious traffic!");
@@ -31,7 +31,8 @@ public class Firewall extends Device implements Auditable {
     @Override
     public void logActivity() {
         System.out.println("Firewall Log -> Rules: " + rulesCount +
-        " | Type: " + firewallType);
+        " | Type: " + firewallType); 
+        // EXAMPLE: Firewall Log -> Rules: 150 | Type: Next-Gen
     }
 
     public int getRulesCount() {

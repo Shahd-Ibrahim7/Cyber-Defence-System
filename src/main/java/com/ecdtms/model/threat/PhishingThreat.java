@@ -16,5 +16,5 @@ public class PhishingThreat extends Threat {
     @Override
     public void performAttack() {
         System.out.println("Phishing attack: sending " + fakeUrl + " to " + targetEmail);
-    }
+    } // example: Phishing attack: sending http://fakebank.com to john.doe@example.com 
 }

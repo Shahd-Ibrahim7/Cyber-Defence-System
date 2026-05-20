@@ -1,13 +1,20 @@
 package com.ecdtms.repository;
 
 import com.ecdtms.database.DatabaseManager;
+import com.ecdtms.model.threat.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ThreatRepository {
 
+    //-----------------------------------
+    // CREATE
+    //-----------------------------------
     public void addThreat(String threatId,
                           String description,
                           String severity) throws SQLException {
@@ -27,32 +34,41 @@ public class ThreatRepository {
         }
     }
 
-    public java.util.List<com.ecdtms.model.threat.Threat> getAllThreats() throws SQLException {
-        String query = "SELECT threat_id, description, severity FROM threats";
+    //-----------------------------------
+    // READ ALL
+    //-----------------------------------
+    public List<Threat> getAllThreats() throws SQLException {
+
+        String query =
+                "SELECT threat_id, description, severity FROM threats";
 
         Connection conn = DatabaseManager.getConnection();
-        java.util.List<com.ecdtms.model.threat.Threat> result = new java.util.ArrayList<>();
+        List<Threat> result = new ArrayList<>();
 
-        try (PreparedStatement pstmt = conn.prepareStatement(query);
-             java.sql.ResultSet rs = pstmt.executeQuery()) {
+        try (
+                PreparedStatement pstmt = conn.prepareStatement(query);
+                ResultSet rs = pstmt.executeQuery()
+        ) {
 
             while (rs.next()) {
-                // Threat is abstract; use a minimal concrete representation via an anonymous subclass.
+
                 String id = rs.getString("threat_id");
                 String description = rs.getString("description");
                 String severityStr = rs.getString("severity");
 
-                com.ecdtms.model.threat.SeverityLevel severity;
+                SeverityLevel severity;
+
                 try {
-                    severity = com.ecdtms.model.threat.SeverityLevel.valueOf(severityStr);
+                    severity = SeverityLevel.valueOf(severityStr);
                 } catch (Exception e) {
-                    severity = com.ecdtms.model.threat.SeverityLevel.LOW;
+                    severity = SeverityLevel.LOW;
                 }
 
-                com.ecdtms.model.threat.Threat threat = new com.ecdtms.model.threat.Threat(id, description, severity) {
+                // temporary generic threat object
+                Threat threat = new Threat(id, description, severity) {
                     @Override
                     public void performAttack() {
-                        // no-op (DB mapping only)
+                        // DB mapping only
                     }
                 };
 
@@ -63,9 +79,54 @@ public class ThreatRepository {
         return result;
     }
 
+    //-----------------------------------
+    // READ BY ID
+    //-----------------------------------
+    public Threat getThreatById(String threatId) throws SQLException {
+
+        String query =
+                "SELECT * FROM threats WHERE threat_id = ?";
+
+        Connection conn = DatabaseManager.getConnection();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, threatId);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+
+                if (rs.next()) {
+
+                    String description = rs.getString("description");
+                    String severityStr = rs.getString("severity");
+
+                    SeverityLevel severity;
+
+                    try {
+                        severity = SeverityLevel.valueOf(severityStr);
+                    } catch (Exception e) {
+                        severity = SeverityLevel.LOW;
+                    }
+
+                    return new Threat(threatId, description, severity) {
+                        @Override
+                        public void performAttack() {
+                            // DB mapping only
+                        }
+                    };
+                }
+            }
+        }
+
+        return null;
+    }
+
+    //-----------------------------------
+    // UPDATE
+    //-----------------------------------
     public void updateThreat(String threatId,
-                               String description,
-                               String severity) throws SQLException {
+                             String description,
+                             String severity) throws SQLException {
 
         String query =
                 "UPDATE threats SET description = ?, severity = ? WHERE threat_id = ?";
@@ -73,18 +134,27 @@ public class ThreatRepository {
         Connection conn = DatabaseManager.getConnection();
 
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+
             pstmt.setString(1, description);
             pstmt.setString(2, severity);
             pstmt.setString(3, threatId);
+
             pstmt.executeUpdate();
         }
     }
 
+    //-----------------------------------
+    // DELETE
+    //-----------------------------------
     public void deleteThreat(String threatId) throws SQLException {
-        String query = "DELETE FROM threats WHERE threat_id = ?";
+
+        String query =
+                "DELETE FROM threats WHERE threat_id = ?";
 
         Connection conn = DatabaseManager.getConnection();
+
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+
             pstmt.setString(1, threatId);
             pstmt.executeUpdate();
         }

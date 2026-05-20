@@ -69,7 +69,7 @@ public class Incident {
             ": " + title +
             " | Status: " + status +
             " | Device: " + (affectedDevice != null ? 
-            affectedDevice.getDeviceId() : "N/A") + 
+            affectedDevice.getDeviceId() : "N/A") + // n/a if no device is affected
             " | Threat: " + (detectedThreat != null ? 
             detectedThreat.getThreatId() : "N/A"); 
     }

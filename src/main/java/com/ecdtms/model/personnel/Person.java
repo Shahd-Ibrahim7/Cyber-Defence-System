@@ -42,7 +42,7 @@ public abstract class Person {
     }
 
     @Override
-    //دي method بتحول object لنص
+    //دي method بتحول object لنص 
     public String toString() {
         return "Person{" +
         "id=" + id +
@@ -50,4 +50,6 @@ public abstract class Person {
         ", email='" + email + '\'' +
         '}';
     }
+
+    // .toString()
 }
